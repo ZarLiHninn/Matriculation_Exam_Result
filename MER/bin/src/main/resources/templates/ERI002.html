@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Detail Result</title>
+<link rel="stylesheet" th:href="@{/css/Detail_Result.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+						<link rel="stylesheet" th:href="@{/css/PrintResult.css}" media="print" />	
+								
+</head>
+<body class="body" th:each="list : ${detail}">
+
+	<div class="header">
+		<img class="logo" th:src="@{/images/school.jpg}" />
+		<h2>Matriculation Exam Results</h2>
+	</div>
+	<div id="status" >
+		<div th:if="${list.Myan ge 40 and list.Engl ge 40 and list.Math ge 40 and list.Chem ge 40 and list.Phys ge 40 and list.Bio_Eco ge 40}"
+						th:text="Pass"></div>
+	    <div th:if="${list.Myan lt 40 or list.Engl lt 40 or list.Math lt 40 or list.Chem lt 40 or list.Phys lt 40 or list.Bio_Eco lt 40}"
+						th:text="Fail"></div>
+	</div>
+	<div id="date">
+		<label>Date:</label><label th:text="${#dates.format(#dates.createNow(),'YYYY/MM/dd')}">
+		</label>
+	</div>
+
+	<div id="rollNo" >
+		Roll Number: <label id="border-roll" th:text=${list.studentModel.stu_rollno}>sadama-679</label>
+	</div>
+
+	<div id="stdName">
+		Name: <label id="border-name" th:text=${list.studentModel.stu_name}>Mg Thue Htet Pyae</label>
+	</div>
+
+	<div class="container">
+		<div id="score-margin" class="row">
+			<div  class="col-md-6 col-sm-6 col-xs-6">
+			<div class="container">
+				<div>
+					<label id="border-width"><strong>Subject</strong></label>
+				</div>
+			</div>
+				<div id="sub">
+				 <div>
+					1. <label>Myanmar</label>
+				</div>
+				<div>
+				    2. <label>English</label>
+				</div>
+				<div>
+					3. <label>Mathematics</label>
+				</div>
+				<div>
+					4. <label>Chemistry</label>
+				</div>
+				<div>
+					5. <label>Physics</label>
+				</div>
+				<div>
+					6. <label>Bio/Eco</label>
+				</div>
+				</div>
+				<br>
+				
+				<div id="margin-total">
+					<label><strong>Total::</strong></label>
+				</div>
+				
+				<div id="score-explanation">
+				<p>D - Destination</p>
+				<p>F - Failed</p>
+				<p>P - Pass</p>
+				</div>
+				
+				
+			</div>
+			<div  class="col-md-6 col-sm-6 col-xs-6">
+				
+				<div id="margin-score-title">
+					<label id="border-width"><strong>Score</strong></label>
+				</div>
+				<div id="align-score">
+				<div>
+					<label th:text=${list.Myan}>80</label>/100
+					<strong><label th:if="${list.Myan ge 40 and list.Myan lt 75}" th:text="P"></label>
+					        <label th:if="${list.Myan ge 75}" th:text="D"></label>
+					        <label th:if="${list.Myan lt 40}" th:text="F"></label></strong>
+					
+				</div>
+				<div>
+					<label th:text=${list.Engl}>80</label>/100
+					<strong><label th:if="${list.Engl ge 40 and list.Engl lt 75}" th:text="P"></label>
+					        <label th:if="${list.Engl ge 75}" th:text="D"></label>
+					        <label th:if="${list.Engl lt 40}" th:text="F"></label></strong>
+				<div>
+					<label th:text=${list.Math}>99</label>/100
+					<strong><label th:if="${list.Math ge 40 and list.Math lt 75}" th:text="P"></label>
+					        <label th:if="${list.Math ge 75}" th:text="D"></label>
+					        <label th:if="${list.Math lt 40}" th:text="F"></label></strong>
+				</div>
+				<div>
+				<label th:text=${list.Chem}>100</label>/100
+				<strong><label th:if="${list.Chem ge 40 and list.Chem lt 75}" th:text="P"></label>
+					    <label th:if="${list.Chem ge 75}" th:text="D"></label>
+				        <label th:if="${list.Chem lt 40}" th:text="F"></label></strong>
+				</div>
+				<div>
+					<label th:text=${list.Phys}>100</label>/100
+					<strong><label th:if="${list.Phys ge 40 and list.Phys lt 75}" th:text="P"></label>
+					        <label th:if="${list.Phys ge 75}" th:text="D"></label>
+					        <label th:if="${list.Phys lt 40}" th:text="F"></label></strong>
+				</div>
+				<div>
+					<label th:text=${list.Bio_Eco}>100</label>/100
+					<strong><label th:if="${list.Bio_Eco ge 40 and list.Bio_Eco lt 75}" th:text="P"></label>
+					        <label th:if="${list.Bio_Eco ge 75}" th:text="D"></label>
+					        <label th:if="${list.Bio_Eco lt 40}" th:text="F"></label></strong>
+				</div>
+				<br>
+				
+				<div id="mark-total">
+					<label th:text=${list.Myan+list.Engl+list.Math+list.Chem+list.Phys+list.Bio_Eco}>510</label>
+				</div>
+				<div>
+					<button type="button" onclick="window.print()" id="print">Print</button>
+
+				</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

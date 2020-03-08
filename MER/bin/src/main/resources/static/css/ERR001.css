@@ -1,0 +1,141 @@
+
+body {
+	margin: 0px;
+	background-color: #f2f2f2;
+	height:90%;
+    font-size: 5px;
+   
+    
+}
+#whole{
+	background-color:#f2f2f2;
+
+}
+
+.logo {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+.header {
+	border-bottom: 2px black solid;
+	padding-bottom: 10px;
+	width:100%;
+	float:left;
+	min-width: 20%;
+	
+}
+.resultList1{
+	float: left;
+	padding-left:20px;
+	padding-top:10px;
+	letter-spacing: 2px;
+	font-weight:bold;
+	
+}
+.resultList2{
+	margin:2px;
+	font-weight:bold;
+	
+}
+.admin{
+	float:right;
+	padding-top:20px;
+	padding-right:40px;
+
+}
+#admLgn{
+	float:right;
+	padding-top:60px;
+	text-decoration:underline;
+	color:black;
+	
+}
+.author{
+	border-bottom: 2px black solid;
+	float:left;
+	text-align: center;
+	width:100%;
+	margin-top:0px;
+	
+}
+
+#search{
+	float:right;
+	margin-right:3%;
+	color:white;
+	background-color:#99c049;
+}
+td{
+	text-align:center;
+	
+}
+#mainlist{
+	width:96%;
+	 margin-left:2%;
+	  margin-right:2%;
+	  margin-top:2%;
+	  background-color:white;
+}
+#rollNo,#stdName{
+	width:5%;
+	padding-right:30px;
+
+}
+label{
+   padding-right:5px;	
+   padding-left:20px;
+}
+#rollNoLst,#stdNameLst,#divisionLst,#townshipLst,#statusLst,#distinctionsLst{
+	font-weight:normal;
+}
+#detail{
+	text-decoration:underline;
+}
+ul{
+	text-align:center;
+}
+.paginate_button {
+    box-sizing: border-box;
+    min-width: 1.5em;
+    padding: 0.5em 1em;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    *cursor: hand;
+    color: #333 !important;
+    border: 1px white transparent;
+   
+}
+#mainlist_paginate{
+	text-align:center;
+}
+#thead{
+    padding: 1px 1px;
+    border-bottom: 0px solid #ffffff;
+        background-color:#f2f2f2;
+    
+}
+tbody td {
+    padding: 1px 1px;
+    border-bottom: 0px solid #ffffff;
+    background-color:#f2f2f2;
+}
+
+thead td {
+    padding: 1px 1px;
+    border-bottom: 0px solid #ffffff;
+    background-color:#f2f2f2;
+}
+table.dataTable td {
+    -webkit-box-sizing: content-box;
+    box-sizing: none;
+}
+table.dataTable tbody td {
+    padding: 4px 10px;
+}
+table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+

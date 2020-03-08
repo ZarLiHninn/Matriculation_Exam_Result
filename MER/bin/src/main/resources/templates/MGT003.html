@@ -1,0 +1,230 @@
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Result Management</title>  
+   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+	<link rel="stylesheet" th:href="@{/css/ResultManagement.css}"/>
+</head>
+<body>
+
+	<h3 style="margin: 1.5% 5%;"><b>Result Management</b></h3>
+	<hr>
+	<div  style="margin: 3% 5%;">
+ <form th:action="@{/LGN002/MGT003}"  th:object="${resultModel}" method="post" id="formsubmit">
+ 
+  	<div class="form-group row">
+    	<label for="year" class="col-sm-2 col-form-label"><span class="star">*</span>Year</label>
+    	<div class="col-sm-2">
+   		<input list="yearlist" class="form-control  border_own" id="year" value=""  tabindex=2 autocomplete="off">
+      		<datalist id="yearlist">
+      			<select>
+	      			<th:block th:each="yearSelect : ${yearlist}">
+	      			<option th:text="${yearSelect}"></option>
+	      			</th:block>
+      			</select>
+      		</datalist>
+
+    	</div>
+    	 <div class="col-sm-4">
+	      <p  id="errorForYearList" class="errortext"></p>
+	    </div>
+ 	</div>
+  	<div class="form-group row">
+    	<label for="rollNo" class="col-sm-2 col-form-label"><span class="star">*</span>Roll Number</label>
+    		<div class="col-sm-4">
+      			<input list="township_dlist" class="form-control  border_own" id="rollno" disabled="disabled" autocomplete="off">
+      				<datalist id="township_dlist">
+      					<select id="selectrollno"></select>
+      				</datalist>	
+    		</div>  
+    		 <div class="col-sm-4">
+	      <p  id="errorForRollNoList" class="errortext"></p>
+	    </div>
+  	</div>
+  	
+  	<div class="form-group row">
+	    <label for="stdName" class="col-sm-2 col-form-label"><span class="star">*</span>Name</label>
+	    <div class="col-sm-4">
+	      <input type="text" readonly class="form-control border_own readonly_bg" id="stdName" value="" />
+	      <input type="hidden"  id="stdId"  th:field="*{studentModel.stu_id}"/>
+	      <input type="hidden"  id="stdResultId"   th:field="*{id}"/>
+	      <input type="hidden"  id="getUpdateData" th:value="${studentInfoForUpdate}"/>
+	      <input type="hidden"  id="message" th:value="${message}"/>
+	    </div>
+	    <div class="col-sm-4">
+	  
+	        <p class="errortext"  th:text="${studentNameError}"></p>
+	    </div>
+  	</div>
+  	
+ 	<div class="form-group row">
+	    <label for="myanMark" class="col-sm-2 col-form-label"><span class="star">*</span>Myanmar</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control  border_own" id="Mark" tabindex=3  th:field="*{Myan}" autocomplete="off" placeholder="0-100" >
+	    </div>	
+	    <div class="col-sm-4">
+	      <p th:if="${#fields.hasErrors('Myan')}" th:errors="*{Myan}" class="errortext"></p>
+	    </div>
+  	</div>
+
+ 	<div class="form-group row">
+	    <label for="engMark" class="col-sm-2 col-form-label"><span class="star">*</span>English</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control  border_own" id="Mark"  tabindex=4  th:field="*{Engl}" autocomplete="off" placeholder="0-100" >
+	    </div>
+	    <div class="col-sm-4">
+	      <p th:if="${#fields.hasErrors('Engl')}" th:errors="*{Engl}" class="errortext"></p>
+	    </div>
+ 	</div>
+
+   	<div class="form-group row">
+	    <label for="mathsMark" class="col-sm-2 col-form-label"><span class="star">*</span>Mathematics</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control  border_own" id="Mark"  tabindex=5  th:field="*{Math}" autocomplete="off" placeholder="0-100" >
+	    </div>
+	    <div class="col-sm-4">
+	      <p th:if="${#fields.hasErrors('Math')}" th:errors="*{Math}" class="errortext"></p>
+	    </div>
+ 	</div>
+
+   <div class="form-group row">
+    <label for="chemMark" class="col-sm-2 col-form-label"><span class="star">*</span>Chemistry</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control  border_own" id="Mark"  tabindex=6 th:field="*{Chem}" autocomplete="off" placeholder="0-100" >
+    </div>
+   <div class="col-sm-4">
+      <p th:if="${#fields.hasErrors('Chem')}" th:errors="*{Chem}" class="errortext"></p>
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="physMark" class="col-sm-2 col-form-label"><span class="star">*</span>Physics</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control  border_own" id="Mark"  tabindex=7 th:field="*{Phys}" autocomplete="off" placeholder="0-100" >
+    </div>
+    <div class="col-sm-4">
+      <p th:if="${#fields.hasErrors('Phys')}" th:errors="*{Phys}" class="errortext"></p>
+    </div>
+  </div>
+
+	<div class="form-group row">
+    <label for="bioEcoMark" class="col-sm-2 col-form-label"><span class="star">*</span>Bio/Eco</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control  border_own" id="Mark"  tabindex=8 th:field="*{Bio_Eco}" autocomplete="off" placeholder="0-100" >
+    </div>
+     <div class="col-sm-4">
+      <p th:if="${#fields.hasErrors('Bio_Eco')}" th:errors="*{Bio_Eco}" class="errortext"></p>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-3 offset-sm-4" style="padding: 0 5%;">
+     	<button type="button" class="btn btn-success" tabindex=9 th:text="${buttonText}"  id="updatePopUp" ></button>
+     	<button type="button" class="btn btn-success" tabindex=10 th:onclick="resetfunction()" id="reset">Reset</button>
+    </div>
+  </div>
+ 
+</form>
+
+<div class="row">
+<div class="table-center">
+   <table id="resultList" class="table display" border="1">
+                <thead class="col text-center">
+                    <tr>
+                        <th class="align-middle">Sr.No</th>
+						<th class="search">
+						Roll Number</br>
+						<input type="text" class="tftextinput" size="8" tabindex=12>
+						</th>
+						<th class="search">
+						Year</br>
+						<input type="text" class="tftextinput" size="4" tabindex=13>
+						</th>
+						<th  class="search">Name</br>
+		        				<input type="text" class="tftextinput" size="13" tabindex=14>
+						</th>
+						<th class="search">Myan</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=15>
+						</th>
+						<th class="search">Eng</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=16>
+						</th>
+						<th class="search">Maths</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=17>
+						</th>
+						<th class="search">Chem</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=18>
+						</th>
+						<th class="search">Phys</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=19>
+						</th>
+						<th class="search">Bio</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=20>
+						</th>
+						<th class="search">Eco</br>
+		        				<input type="text" class="tftextinput"  size="3" tabindex=21>
+						</th>
+						<th class="noExport align-middle">Actions</th>
+                    </tr>
+               	</thead>
+
+								    <tbody>
+								
+								        <tr th:each="result,itrStat:${resultlistall}">
+								            <td  class="align-middle" th:text="${itrStat.index+1}"></td>
+								            <td class="align-middle" th:text="${result.studentModel.stu_rollno}"></td>
+											<td class="align-middle" th:text="${result.studentModel.year}"></td>
+											<td class="align-middle" th:text="${result.studentModel.stu_name}"></td>
+											<td class="align-middle" th:text="${result.Myan}"></td>
+											<td class="align-middle" th:text="${result.Engl}"></td>
+											<td class="align-middle" th:text="${result.Math}"></td>
+											<td class="align-middle" th:text="${result.Chem}"></td>
+											<td class="align-middle" th:text="${result.Phys}"></td>
+											<span th:if="${result.studentModel.majorModel.major_id==1}">
+												<td class="align-middle" th:text="${result.Bio_Eco}"></td>
+												<td class="align-middle">-</td>
+											</span>
+											<span th:unless="${result.studentModel.majorModel.major_id==1}">
+												<td class="align-middle">-</td>
+												<td class="align-middle" th:text="${result.Bio_Eco}"></td>
+											</span>
+								            <td>
+								              <a th:href="@{'/LGN002/editResultDetail/'+${result.id}}"><button type="submit" class="btn btn-success"  tabindex=22 id="editButton"><i class="fas fa-pencil-alt"></i></button></a>
+								                <button type="button" class="btn btn-danger" th:onclick="'deletefunction('+${result.id}+')'" tabindex=23><i class="fa fa-times"></i></button>
+								                
+												</td>
+								        </tr>
+
+						     
+								            
+								    </tbody>
+								</table>
+                            
+                    </div>
+	</div>
+</div>   
+
+<!-- Scripts -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+   	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  	<script type="text/javascript" th:src="@{/js/bootbox.js}"></script>  
+	<script type="text/javascript" th:src="@{/js/ResultManagement.js}"></script>
+	<script type="text/javascript" th:src="@{/js/notify.js}"></script>
+ </body>
+</html>

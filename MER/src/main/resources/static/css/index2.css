@@ -1,0 +1,93 @@
+html {
+
+}
+body {
+	margin: 0px;
+	background-color: #f2f2f2;
+	height: 90%;
+}
+.logo {
+	width: 100px;
+	height: 100px;
+	float: left;
+	border-radius:50%;
+	margin: 10px 10px;
+}
+.header {
+	border-bottom: 2px black solid;
+	padding-bottom: 10px;
+	width: 100%;
+	float: left;
+	min-width: 960px;
+}
+h2 {
+	float: left;
+	padding-left: 20px;
+	padding-top: 10px;
+	letter-spacing: 2px;
+}
+.admin {
+	float: right;
+	padding-top: 20px;
+	padding-right: 40px;
+}
+.logout {
+	float: right;
+	padding-top: 10px;
+}
+.author {
+	border-bottom: 2px black solid;
+	float: left;
+	text-align: center;
+	width: 100%;
+	margin-top: 0px;
+	background:darkgray;
+}
+h3 {
+	margin: 5px;
+}
+.left {
+	width: 370px;
+	float: left;
+	border-right:2px solid black;
+	background:#99c049;
+}
+button {
+	width: 340px;
+	height: 80px;
+	background-color: white;
+	border-color: #99c049;
+}
+.btn {
+	color: black;
+	font-size: 20px;
+	margin: 30px 10px;
+	cursor: pointer;
+	-webkit-transition: background-color .3s ease-out;
+	-moz-transition: background-color .3s ease-out;
+	-ms-transition: background-color .3s ease-out;
+	-o-transition: background-color .3s ease-out;
+	transition: background-color .3s ease-out;
+	background-clip: padding-box; /* Fix bleeding */
+}
+.btn:hover {
+	background: yellow;
+	border: 3px solid green;
+	color:black;
+}
+.btn:active{
+	background: orange;
+	border: 3px solid green;
+	color:black;
+}
+.br{
+	clear:both;
+}
+.footer{
+	width:100%;
+	border-top:2px solid black;
+}
+.wc{
+	float:left;
+	
+}

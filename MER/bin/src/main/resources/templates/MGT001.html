@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+	<title>User Management</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.5/js/dataTables.fixedColumns.js"></script>
+	<script type="text/javascript" th:src="@{/js/bootbox.js}"></script>
+	<script type="text/javascript" th:src="@{/js/notify.js}"></script>
+    
+	
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/south-street/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/user_management.css}">
+	
+
+</head>
+<body>
+		<h3 style="margin-left: 10px;"><b>User Management</b></h3>
+		<hr>
+		<div class="row">
+		<form id="studentForm" name="studentForm" class="col-sm-8" th:action="@{${link}}" th:object="${studentForm}" method="POST"><!-- better think for a method to bind roll number in the html form. -->
+		
+			<div class="container">
+			<div class="form-group row">
+    			<label class="col-sm-3 col-form-label"><span class="star">*</span>Roll Number</label>
+    			<div class="col-sm-5">
+    			<input list="division_dlist" class="roll" id="division" placeholder="Division" th:field="*{division}" autocomplete="off"/><!--
+    			--><input list="township_dlist" class="roll" id="township" placeholder="Township" th:field="*{township}" autocomplete="off"/><!--
+    			--><input type="text" class="roll" id="roll_number" placeholder="Number" th:field="*{rollNumber}" autocomplete="off"/>	
+    			<datalist id="division_dlist">
+      			<select>
+      				<th:block th:each="divisions : ${divisionList}">
+      				<option th:text="${divisions.div_name}"></option>
+      				</th:block>
+      			</select>
+      			</datalist>
+      			  
+      			<datalist id="township_dlist">
+      			<select id="township_select" >
+      			</select>
+      			</datalist>
+      			
+      			<label class="error"  th:if="${#fields.hasErrors('rollNumber')}" th:errors="*{rollNumber}"></label>
+      			<label class="error"  th:if="${#fields.hasErrors('division')}" th:errors="*{division}"></label>
+      			<label class="error"  th:if="${#fields.hasErrors('township')}" th:errors="*{township}"></label>
+      			<input type="hidden" class="roll" id="student_id" th:field="*{stu_id}"/>
+      			</div>
+  			</div>
+  			<div class="form-group row">
+    			<label for="name" class="col-sm-3 col-form-label"><span class="star">*</span>Name</label>
+    			<div class="col-sm-5">
+      			<input type="text"  class="inputs" id="name" placeholder="Name" th:field="*{stu_name}" autocomplete="off"/>
+      			<label class="error"  th:if="${#fields.hasErrors('stu_name')}" th:errors="*{stu_name}"></label>
+      			</div>
+  			</div>
+  			<div class="form-group row">
+    			<label class="col-sm-3 col-form-label"><span class="star">*</span>Year</label>
+    			<div class="col-sm-5">
+      			<input type="text" id = "year" class="inputs" placeholder=". . . ." th:field="*{year}" autocomplete="off"/>
+      			<label class="error"  th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></label>
+      			</div>
+  			</div>
+  			<div class="form-group row">
+    			<label class="col-sm-3 col-form-label"><span class="star">*</span>School</label>
+    			<div class="col-sm-5">
+      			<input type="text" id = "school" class="inputs" placeholder="School" th:field="*{stu_school}" autocomplete="off"/>
+      			<label class="error"  th:if="${#fields.hasErrors('stu_school')}" th:errors="*{stu_school}"></label>
+      			</div>
+  			</div>
+  			<div class="form-group row">
+    			<label class="col-sm-3 col-form-label"><span class="star">*</span>Date Of Birth</label>
+    			<div class="col-sm-5">
+      			<input id = "dob" class="inputs" placeholder="YY-MM-DD" th:field="*{stu_dob}" autocomplete="off"/>
+      			<label class="error"  th:if="${#fields.hasErrors('stu_dob')}" th:errors="*{stu_dob}"></label>
+      			</div>
+  			</div>
+  			<div class="form-group row">
+    			<label class="col-sm-3 col-form-label"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>NRC No.</label>
+    			<div class="col-sm-5">
+      			<input type="text" id = "nrc" class="inputs" placeholder="NRC number" th:field="*{stu_nrc}" autocomplete="off"/>
+      			</div>
+  			</div>
+  			<div class="form-group row">
+  				<label class="col-sm-3 col-form-label"><span class="star">*</span>Major</label>
+  				<div class="col-sm-5">
+  				<th:block th:each="major : ${majorList}">
+  						<label class="radio-inline" th:text="${major.major_name}"></label>
+    					<input type="radio" th:value="${major.major_id}" th:id="${major.major_name}" th:field="*{major_id}" name="majorRadio"/>
+  				</th:block>
+  				</div>
+  			</div>
+  			<div class="form-group row">
+      			<label for="reset" class="col-sm-3 col-form-label">Reset Password</label>
+      			<div class="col-sm-5">
+      			<input type="checkbox" name="reset_password" th:checked="*{reset_password}">
+      			</div>
+      		</div>
+  			<input type="hidden" id="message" th:value="${message}"/>
+ 			<div class="form-group row">
+    <div class="col-sm-3 offset-sm-4" style="padding: 0 5%;">
+    <div class="row">
+    <div class="col-sm-6">
+     <button type="button" class="btn btn-success" id="addorupdate"  data-toggle="modal" data-target="#updatedata" th:onclick='submitButton()' tabindex=9><span th:text="${button}"></span></button>
+     </div>
+     <div class="col-sm-6">
+     <button type="button" class="btn btn-success" tabindex=10 onclick='resetbutton()'>Reset</button>
+     </div>
+     </div>
+    </div>
+  </div>
+  			</div>
+  		
+		</form>
+	</div>
+	<div class="row align-items-center justify-content-center">
+		
+			<table id="userList" class="table display" style="width:100%" border="1">
+			<thead class="col text-center">
+				<tr>
+					<th>Sr.No</th>
+					<th class="search">
+						Roll Number</br>
+						<input type="text" class="tftextinput" size="8" >
+					</th>
+					<th class="search">
+						Name</br>
+						<input type="text" class="tftextinput" size="8" >
+					</th>
+					<th class="search">
+						Year</br>
+						<input type="text" class="tftextinput" size="4" >
+					</th>
+					<th class="search">
+						Major</br>
+						<input type="text" class="tftextinput" size="4" >
+					</th>
+					<th class="search">
+						School</br>
+						<input type="text" class="tftextinput" size="8" >
+					</th>
+					<th>Date Of Birth</th>
+					
+					<th>NRC</th>
+					<th class="noExport">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="student,itrstat : ${studentList}">
+				<tr>
+					<td th:text="${itrstat.index+1}"></td>
+					<td th:text="${student.stu_rollno}"></td>
+					<td th:text="${student.stu_name}"></td>
+					<td th:text="${student.year}"></td>
+					<td th:text="${student.majorModel.major_name}"></td>
+					<td th:text="${student.stu_school}"></td>
+					<td th:text="${student.stu_dob}"></td>
+					<td th:text="${student.stu_nrc}"></td>
+					<td>
+					<div class="row">
+					<div class="upd_del">
+						<a th:href="@{'/LGN002/MGT001/student_update/'+${student.stu_id}}"><button type="submit"  class="btn btn-success"  tabindex=22 onclick="editfunc()"><i class="fas fa-pencil-alt"></i></button></a>
+						</div>            
+						<div class="upd_del">
+							<button type="button" class="btn btn-danger" name="delbtn"  tabindex=23 th:onclick="'deletefunction('+${student.stu_id}+')'" ><i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					</td>
+				</tr>
+				</th:block>
+			</tbody>
+			</table>
+	</div>  
+	<!-- This is township add function -->
+<script type="text/javascript" th:src="@{/js/UserManagement.js}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+</body>
+</html>

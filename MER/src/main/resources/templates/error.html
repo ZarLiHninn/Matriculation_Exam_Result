@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Error</title>
+<link rel="stylesheet" th:href="@{/css/ERR001.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+  .error {
+         color: red;
+         font-size:1em;}
+         .messagetext{
+         
+         text-align:center;
+         }
+ </style>							
+</head>
+<body>
+
+	<div class="header">
+		<img class="logo" th:src="@{/images/school.jpg}" />
+		<h2>Error</h2>
+	</div>
+	<div th:if="${duplicate!= null}" class="messagetext">
+      			 <label class="error" >Duplicate Login Error.</label>
+	   <br/>
+	  <label class="load">Please contact administrator.</label>
+	</div>
+	     <div id="click">
+	       <a th:href="@{/LGN002}"><button value="Leave this page" class=" btn btn-success active btn-style center-block" >Leave this page</button></a>
+       	  </div>
+    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+</html>

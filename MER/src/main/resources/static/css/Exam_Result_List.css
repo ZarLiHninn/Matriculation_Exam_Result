@@ -1,0 +1,90 @@
+
+body {
+	margin: 0px;
+	background-color: #f2f2f2;
+	height:90%;
+	
+}
+#whole{
+	background-color:#f2f2f2;
+
+}
+
+.logo {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+.header {
+	border-bottom: 2px black solid;
+	padding-bottom: 10px;
+	width:100%;
+	float:left;
+	min-width: 20%;
+	
+}
+.resultList1{
+	float: left;
+	padding-left:20px;
+	padding-top:10px;
+	letter-spacing: 2px;
+	font-weight:bold;
+	
+}
+.resultList2{
+	margin:2px;
+	font-weight:bold;
+}
+.admin{
+	float:right;
+	padding-top:20px;
+	padding-right:40px;
+
+}
+#admLgn{
+	float:right;
+	padding-top:60px;
+	text-decoration:underline;
+	color:black;
+	
+}
+.author{
+	border-bottom: 2px black solid;
+	float:left;
+	text-align: center;
+	width:100%;
+	margin-top:0px;
+	
+}
+
+#search{
+	float:right;
+	margin-right:3%;
+	color:white;
+	background-color:#99c049;
+}
+td{
+	text-align:center;
+	
+}
+table{
+	width:96%;
+	 margin-left:2%;
+	  margin-right:2%;
+	  margin-top:2%;
+	  background-color:white;
+}
+#rollNo,#stdName{
+	width:5%;
+	padding-right:30px;
+}
+label{
+   padding-right:5px;	
+   padding-left:20px;
+}
+#rollNoLst,#stdNameLst,#divisionLst,#townshipLst,#statusLst,#distinctionsLst{
+	font-weight:normal;
+}
+#detail{
+	text-decoration:underline;
+}

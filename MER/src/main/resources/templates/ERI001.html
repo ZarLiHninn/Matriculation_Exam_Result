@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Admin</title>
+		 <link rel="icon" type="image/ico" href="ssp.jpg" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/ERI001.css}" />
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+		 
+		 <script>
+		 
+		 
+$(document).ready(function() {
+	 var table = $('#mainlist').DataTable({
+		    searching:false,
+		    filter: false,
+		    info: false,
+		    bLengthChange: false,
+		    bFilter: false,
+		    bSort: false,
+		    bInfo: false,
+		    bAutoWidth: false,
+		    pageLength: 20,
+		    tabIndex: 8,
+		   
+		    "language": {
+		        "emptyTable": "There is no data to display"
+		      } 
+		    	
+		});
+	
+	 })
+	function chText(){
+	 var str_rollno=document.getElementById("rollNo");
+	var regex_rollno=/[^a-z^0-9^-]/gi;
+	str_rollno.value=str_rollno.value.replace(regex_rollno,""); 
+	var str_name=document.getElementById("stdName");
+	var regex_name=/[^a-z\s]/gi;
+	str_name.value=str_name.value.replace(regex_name,"");
+}
+
+</script>
+<style type="text/css">
+.dataTables_length{
+display: "hide";
+}
+#message{
+  text-align:center;
+  color:red;
+}
+</style>
+
+	</head>
+	<body id="whole">
+		<div class="header">
+		     <img class="logo"  th:src="@{/images/school.jpg}" />
+			 <h2 class="resultList1">Matriculation Exam Results</h2>
+			 <span  class="admin">
+	         <a id="admLgn" th:href="@{/LGN002}" tabindex="1">Admin Login</a></span>
+    	</div>
+		<div class="author">
+			<h3 class="resultList2">Exam Result List</h3>
+		</div> 
+		<form id="form_id" style='display:inline;' method="post"  th:object="${student}" th:action="@{/theWholeSearch}" >
+           <div>
+			    <label id="message" th:if="${#fields.hasErrors('stu_rollno')}" th:errors="*{stu_rollno}"></label>
+	         <label id="message" th:if="${#fields.hasErrors('stu_name')}" th:errors="*{stu_name}"></label>
+           </div>
+                
+	      <select id="year" th:field="*{year}" tabindex="3">
+	         
+	        <span th:each="year : ${listyear}">
+	           <option th:text="${year}" th:value="${year}"></option>
+	        </span>
+	        
+	          
+	       </select> 
+             
+           <label>Roll No</label>
+           <input type = "text" th:field="*{stu_rollno}" id="rollNo" list="available-id" tabindex="4" onKeyUp="chText()"/>
+				 				     
+				    <datalist  id="available-id" > 
+				   	<span th:each="student:${listid}">
+				           <option th:text="${student}"></option>
+				       </span>   
+				    </datalist>
+          
+         
+           <label>Student Name</label>
+           <input type = "text" th:field="*{stu_name}" name="stu_name" id="stdName" list="available-name" style="width:10%" tabindex="5" onKeyUp="chText()"/>
+				   				  				   				   
+				   				    <datalist  id="available-name" >
+				   	<span th:each="student:${listname}">
+				           <option th:text="${student}"></option>
+				        </span>  
+				    </datalist>
+           
+       
+				<input id="search" type="submit" value="Search" tabindex="6"/>        
+          
+           
+		</form>
+		  
+		<table border="1" id="mainlist">
+		    <thead>
+		        <tr>
+		            <td>Roll Number</td>
+					<td>Student Name</td>
+					<td>Division</td>
+					<td>Township</td>
+					<td>Status</td>
+					<td>Distinctions</td>
+					<td>Details</td>
+		        </tr>
+		    </thead>
+		 <tbody>
+		        <tr th:each="list : ${articles}">
+		            <td><label id="rollNoLst" th:text="${list.studentModel.stu_rollno}"></label></td>
+					<td><label id="stdNameLst" th:text="${list.studentModel.stu_name}"></label></td>
+					<td><label id="divisionLst" th:text="${list.studentModel.townshipModel.division.div_name}"></label></td>
+					<td><label id="townshipLst" th:text="${list.studentModel.townshipModel.twn_name}"></label></td> 
+					<td>
+						<label id="statusLst"
+						th:if="${list.Myan ge 40 and list.Engl ge 40 and list.Math ge 40 and list.Chem ge 40 and list.Phys ge 40 and list.Bio_Eco ge 40}"
+						th:text="Pass"></label>
+					    <label id="statusLst" th:if="${list.Myan lt 40 or list.Engl lt 40 or list.Math lt 40 or list.Chem lt 40 or list.Phys lt 40 or list.Bio_Eco lt 40}" th:text="Fail"></label> 
+					</td>
+					<td>
+						<label id="distinctionsLst" th:if="${list.Myan ge 75}">Myan.,</label>
+						<label id="distinctionsLst" th:if="${list.Engl ge 75}">Eng.,</label>
+						<label id="distinctionsLst" th:if="${list.Math ge 80}">Math.,</label>
+						<label id="distinctionsLst" th:if="${list.Chem ge 80}">Chem.,</label>
+						<label id="distinctionsLst" th:if="${list.Phys ge 80}">Phys.,</label>
+						<label id="distinctionsLst" th:if="${list.studentModel.majorModel.major_name == 'Bio' and list.Bio_Eco ge 75}" th:text="Bio"></label>
+						<label id="distinctionsLst" th:if="${list.studentModel.majorModel.major_name == 'Eco' and list.Bio_Eco ge 80}" th:text="Eco"></label>
+					</td>
+					<td><a id="detail" th:href="@{'/LGN001/'+${list.id}}" tabindex="7">Detail</a></td>
+					
+		        </tr>
+		    </tbody>
+		    
+		   
+       </table>
+     
+
+
+
+   
+	</body>
+</html>

@@ -1,0 +1,245 @@
+<<<<<<< Updated upstream
+@CHARSET "ISO-8859-1";
+html {
+	
+}
+.body {
+	margin: 0px;
+	background-color: #f2f2f2;
+	height:90%;
+	
+}
+.logo {
+	width: 100px;
+	height: 100px;
+	float: left;
+	
+}
+
+.header {
+	border-bottom: 2px black solid;
+	padding-bottom: 10px;
+	width:100%;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 960px;
+}
+h2{
+	float: left;
+	padding-left:20px;
+	padding-top:10px;
+	letter-spacing: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+#date{
+	margin-left:50%;
+	display:inline;
+	
+}
+#score-margin{
+	margin-left:20%;
+	
+}
+#rollNo{
+	padding-top:1%;
+	margin-left:35%;
+	
+	
+}
+
+#stdName{
+	margin-left:35%;
+	padding-bottom:1%;
+	
+}
+
+#border-roll{
+	border-bottom: 2px dotted black;
+	width:200px;
+		
+}
+#border-width{
+	border-bottom: 2px solid black;
+}
+#border-name{
+	border-bottom: 2px dotted black;
+	width:200px;
+	margin-left:5.1%;	
+}
+#subject-margin{
+	margin-right:10%;
+}
+#align-score{
+	text-align: right;
+	float:left;
+
+}
+#margin-score-title{
+	padding-left:3%;
+}
+#margin-total{
+	padding-left:25px;
+}
+#mark-total{
+	padding-right:25px;
+}
+
+
+#status{
+	padding-top:125px;
+	font-size:2em;
+	font-weight: bold;
+	text-align:center;
+	font-family: Time New Roman;
+	text-transform:uppercase;
+	
+		
+}
+#print{
+	width:70px;
+	height:35px;
+	background-color:#99c049;
+	border-radius:3px;
+	box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2), 0 2px 1px 0 rgba(0,0,0,0.19);
+	
+}
+#score-explanation{
+	border: 2px dotted black;
+	width:180px;
+	padding-top:5px;
+	height:110px;
+	padding-left:20px;
+	border-radius:3px;
+	
+}
+
+
+
+
+
+
+
+=======
+@CHARSET "ISO-8859-1";
+html {
+	
+}
+.body {
+	margin: 0px;
+	background-color: #f2f2f2;
+	height:90%;
+	
+}
+.logo {
+	width: 100px;
+	height: 100px;
+	float: left;
+	
+}
+
+.header {
+	border-bottom: 2px black solid;
+	padding-bottom: 10px;
+	width:100%;
+	float:left;
+	font-family: Arial, Helvetica, sans-serif;
+	min-width: 960px;
+}
+h2{
+	float: left;
+	padding-left:20px;
+	padding-top:10px;
+	letter-spacing: 1px;
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+#date{
+	margin-left:50%;
+	display:inline;
+	
+}
+#score-margin{
+	margin-left:20%;
+	
+}
+#rollNo{
+	padding-top:1%;
+	margin-left:35%;
+	
+	
+}
+
+#stdName{
+	margin-left:35%;
+	padding-bottom:1%;
+	
+}
+
+#border-roll{
+	border-bottom: 2px dotted black;
+	width:200px;
+		
+}
+#border-width{
+	border-bottom: 2px solid black;
+}
+#border-name{
+	border-bottom: 2px dotted black;
+	width:200px;
+	margin-left:5.1%;	
+}
+#subject-margin{
+	margin-right:10%;
+}
+#align-score{
+	text-align: right;
+	float:left;
+
+}
+#margin-score-title{
+	padding-left:3%;
+}
+#margin-total{
+	padding-left:25px;
+}
+#mark-total{
+	padding-right:25px;
+}
+
+
+#status{
+	padding-top:125px;
+	font-size:2em;
+	font-weight: bold;
+	text-align:center;
+	font-family: Time New Roman;
+	text-transform:uppercase;
+	
+		
+}
+#print{
+	width:70px;
+	height:35px;
+	background-color:#99c049;
+	border-radius:3px;
+	box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2), 0 2px 1px 0 rgba(0,0,0,0.19);
+	
+}
+#score-explanation{
+	border: 2px dotted black;
+	width:180px;
+	padding-top:5px;
+	height:110px;
+	padding-left:20px;
+	border-radius:3px;
+	
+}
+
+
+
+
+
+
+
+>>>>>>> Stashed changes

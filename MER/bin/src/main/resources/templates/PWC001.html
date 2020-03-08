@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	
+<style>
+  .error {
+         color: red;
+         font-size:1em;}
+ </style>
+	
+</head>
+<body>
+
+  <div class="container">
+    <div class="login-box">
+      <div class="row">
+      <form th:action="@{/LGN002/PWC001}" th:object="${reset}" method="POST">
+      <div class="form-group login-title">
+        <img class="header" th:src="@{/images/school.jpg}" />
+        <label>Matriculation Exam Result</label>
+      </div>
+      <div class="login-body">
+      <div class="col-xs-12">
+      		<div th:if="${#fields.hasErrors('oldPasswordd')}" class="alert alert-info alert-dismissable">
+      			 <label class="error" th:if="${#fields.hasErrors('oldPasswordd')}" th:errors="*{oldPasswordd}">Name Error</label>
+      		</div>
+      		<div th:if="${#fields.hasErrors('newPasswordd')}" class="alert alert-info alert-dismissable">
+      			 <label class="error"  th:if="${#fields.hasErrors('newPasswordd')}" th:errors="*{newPasswordd}">Password Error</label>
+       		</div>
+       		<div th:if="${#fields.hasErrors('comfrmPasswordd')}" class="alert alert-info alert-dismissable">
+      			 <label class="error"  th:if="${#fields.hasErrors('comfrmPasswordd')}" th:errors="*{comfrmPasswordd}">Password Error</label>
+       		</div>
+       		<div th:if="${wrongPwd!= null}" class="alert alert-info alert-dismissable">
+      			 <label class="error" >Old password does not match</label>
+       		</div>
+       		<div th:if="${newPwd!= null}" class="alert alert-info alert-dismissable">
+      			 <label class="error" >New password should match confirm password.</label>
+       		</div>
+       		<div th:if="${same!= null}" class="alert alert-info alert-dismissable">
+      			 <label class="error" >New password should not be old password.</label>
+       		</div>
+      	</div>
+		<div class="form-group row">
+        	<label class="col-md-5 col-form-label">Old Password</label>
+        	<div class="col-md-7">
+       		<input type="password" class="form-control" name="oldpassword" th:field="*{oldPasswordd}"
+								placeholder="**************"><br>
+			</div>
+		</div>
+		<div class="form-group row">
+        	<label class="col-md-5 col-form-label">New Password</label>
+        	<div class="col-md-7">
+       		<input type="password" class="form-control" name="newpassword" th:field="*{newPasswordd}" placeholder="**************"><br>
+			</div>
+		</div>
+		<div class="form-group row">
+        	<label class="col-md-5 col-form-label">Comfirm Password</label>
+        	<div class="col-md-7">
+       		<input type="password" class="form-control" name="comfirmpassword" th:field="*{comfrmPasswordd}"
+								placeholder="**************"><br>
+			</div>
+			</div>					
+		<div class="row col-md-12">
+		
+        	<button type="submit" class="btn btn-success active btn-style "> Change </button>
+        	<button type="reset" class="btn btn-success active btn-style btn-reset marginRight"> Reset </button>
+        	
+       	</div>
+       </div>
+       </form>
+      </div>
+     
+    </div>
+  </div>
+
+ <script src="/test/jquery.min.js"></script>
+ <script src="/test/bootstrap.min.js"></script> 	
+  
+  
+</body>
+</html>

@@ -1,0 +1,105 @@
+
+.dataTables_filter{
+	display:none;
+	}
+h3 {
+	text-align: center;
+	margin: 20px;
+}
+hr {
+	border :none;
+	height: 2px;
+	background-color: #333;
+	margin-bottom: 30px;
+}
+body{
+		background-color: #f2f2f2;
+	}
+.inputs {
+	width:auto;
+}
+.star {
+	color: red;
+	padding: 5px;
+}
+.roll {
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 22px;
+}
+#roll_number{
+	max-width:30%;
+}
+.exportbtn {
+	margin-bottom: 5px;
+}
+#division,#township {
+	max-width: 30%;
+	width: 40%;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+#number{
+	width: 20%;
+	margin-left:0px !important;
+	margin-right:0px !important;
+}
+
+.tfinput {
+	width: 75px;
+	height: 20px;
+}
+
+.dataTables_filter, .dataTables_info {
+	display: none;
+}
+
+#userList {
+	height:auto;
+	padding:auto;
+	margin:auto;
+	font-size: 13px;
+	text-align: center;
+}
+
+#userList th{
+	padding: 0 5px !important;
+	border:0.5px solid #000 !important;
+	
+	text-align: center;
+}
+#userList td{
+	border:0.5px solid #000 !important;
+	padding: 5px 18px !important;
+	text-align: center;
+}
+#userList_wrapper{
+	padding:20px !important;
+	margin:auto !important;
+	width:auto !important;	
+}
+#userList_info{
+	padding-left:10px !important;
+}
+.btn{
+	width:auto;
+}
+.upd_del {
+	padding:0 !important;
+	height:auto;
+	width:auto;
+}
+.error {
+	color:red;
+	width: 300px;
+}
+.tftextinput{
+		margin: 0 0 5px 0 ;
+		padding: 0;
+		border:3px solid #0c0;
+		border-radius: 5px;
+	}
+	
+.dataTables_filter{
+	display:none;
+	}

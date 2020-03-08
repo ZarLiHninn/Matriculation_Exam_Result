@@ -1,0 +1,50 @@
+.star{
+		color:red; 
+		padding: 0 10px;
+	}
+	hr{
+		height: 2px;
+		background-color: #000;
+		margin: 0;
+	}
+	.exportbtn{
+		margin: 5px 10px;
+	}
+	.readonly_bg{
+		border: 0;
+		background-color: #f2f2f2 !important;
+		color:#000;
+	}
+	body{
+		background-color: #f2f2f2;
+	}
+
+	.tftextinput{
+		margin: 0;
+		padding: 0;
+		border:3px solid #0c0;
+		border-radius: 5px;
+	}
+	.table-center{	margin:0 auto !important;
+		width:100% !important;}
+
+	table{
+		font-size: 13px;
+		/*margin-left: 5px !important;*/
+		text-align: center;
+		
+	}
+	th{
+		padding: 0 5px !important;
+		border:0.5px solid #000 !important;
+		padding: 5px 18px !important;
+	}
+	td{
+		border:0.5px solid #000 !important;
+		padding: 5px 18px !important;
+	}
+	.errortext{
+	color:red;
+	}
+	.dataTables_filter{
+	display:none;}

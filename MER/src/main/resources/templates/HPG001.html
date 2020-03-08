@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Admin</title>
+<link rel="icon" type="image/ico" th:href="@{images/school.jpg}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/index2.css}" />
+</head>
+<body>
+	<div class="header">
+		<img class="logo"  th:src="@{/images/school.jpg}" />
+		<h2>Matriculation Exam Results</h2>
+		<span class="admin">
+			<p><label th:text="${session.adminName}" th:unless="${session == null}"></label>-<label th:text="${#dates.format(#dates.createNow(),'YYYY/MM/dd')}">
+		</label></p> <a class="logout" th:href="@{/LGN002/logout}">Logout</a>
+		</span>
+	</div>
+	<div class="author">
+		<h3>WELCOME TO ADMIN</h3>
+	</div>
+	<div class="left">
+		<button class="btn"
+			onclick="window.location.href='MGT001'">USER
+			&nbsp; MANAEGEMENT</button>
+		<button class="btn" onclick="window.location.href='MGT002'">TOWNSHIP
+			MANAGEMENT</button>
+		<button class="btn" onclick="window.location.href='MGT003'">RESULT
+			MANAEGEMENT</button>
+	</div>
+
+	<div class="br"></div>
+	<div class="footer"></div>
+</body>
+</html>
